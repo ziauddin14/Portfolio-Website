@@ -227,3 +227,40 @@
   document.addEventListener('scroll', navmenuScrollspy);
 
 })();
+
+
+
+document.getElementById('sendMessageButton').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  // Form ko target karo (id ya class se)
+  const form = document.querySelector('.php-email-form'); // Ya document.getElementById('contactForm') agar id add karein
+  if (form) {
+    form.reset(); // Form reset hoga
+  } else {
+    console.log("Form not found!");
+  }
+
+  // UI updates
+  const sentMessage = document.querySelector('.sent-message');
+  if (sentMessage) {
+    sentMessage.style.display = 'block';
+  }
+
+  const loading = document.querySelector('.loading');
+  if (loading) {
+    loading.style.display = 'none';
+  }
+
+  const errorMessage = document.querySelector('.error-message');
+  if (errorMessage) {
+    errorMessage.style.display = 'none';
+  }
+
+  // Message hide karne ke liye timeout
+  setTimeout(function() {
+    if (sentMessage) {
+      sentMessage.style.display = 'none';
+    }
+  }, 7000);
+});
